@@ -1,0 +1,183 @@
+/*Setter bakgrunns fargen, endrer ogsen "boksense" blir kalkulert med border-box som
+gjør det litt letere å få riktig størelse på alt*/
+html {
+    background-color: #EEEEEE; /*#fff*/
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+
+/*Setter margin 0; så det ikke blir noen mellom rom på siden av navbar etc*/
+body {
+    margin: 0;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* det jeg bruker for å kreditere logo / bilder*/
+.credits {
+    font-size: x-small;
+    text-align: center;
+    margin-top: 10px;
+}
+
+.linke {
+    float: left;
+}
+
+
+/* setter font for navbar*/
+.navbar {
+    font-family: co-headline, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-weight: 700;
+    margin-bottom: 60px;
+}
+
+
+/* Setter fonten på teksten som er i content klassen, gjør så alt er i midten
+av siden og gjør så det ikke kan bli mer en 800 px lang. Lager egentlig en boks
+ som er på midten av siden og har en maks brede på 800px 40px høyde så den ikke går i nav baren*/
+.content {
+    font-family: co-headline, Segoe UI, SegoeUI, Helvetica Neue, Helvetica, Arial, sans-serif;
+    width: 900px;
+    margin: 40px auto;
+    padding: 0 10px 0 12px;
+    /*
+    border-left: darkgray solid;
+    border-right: darkgray solid;
+    border-width: 1px;
+     */
+}
+
+/* Bruker til å få IM logo i midten av siden */
+.center {
+    display: block;
+    margin: auto;
+    width: 20%;
+}
+
+/*                            CSS  NAVIGATIONSBAR */
+/* Setter fargen på navbar gjør så den er fixed på toppen av siden og fyller hele breden av siden*/
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #0f4420;
+    position: fixed;
+    top: 0;
+    width: 100%;
+}
+
+/* Gjør så alt blir på venstere siden av navbaren*/
+li {
+    float: left;
+}
+
+
+/* Setter fargen på teksten i navbar til hvit gjør så de blir på venstre siden av "boksen"
+ å lager melomrom mellom dem*/
+li a {
+    display: block;
+    color: white;
+    text-align: left;
+    padding: 8px 10px;
+    text-decoration: none;
+}
+
+/* Når du beveger musen over navbaren bytter boksen farge når dem ikke har klassen active*/
+li a:hover:not(.active) {
+    background-color: #a5d5a8;
+    color: #0f4420;
+}
+
+/* gjør så siden du er på har en annen farge i navbar*/
+.active {
+    background-color: #f2ba69;
+    color: #a64615;
+}
+
+/*                 CSS  TABELLEN*/
+
+/*
+table, th, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+*/
+
+/* Gjør så tabelen dekker hele "boksen" den er i med width 100% å gjør så tabelen er slåtsammen*/
+#table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+/* Setter border på tabelen til 1px gjør den solid og setter fargen til hvit*/
+#table td, #table th {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+
+
+/* Gjør så hver andre tabel blir en annen farge*/
+#table tr:nth-child(even) {
+    background-color: #e5e3e3;
+}
+
+
+/* Når du beveger musen over tabelen endrer den farge*/
+#table tr:hover {
+    background-color: #ddd;
+}
+
+
+/* setter utseende på "overskirften" i tabelen. Gjør så skirften er på venstere
+ siden å setter fargene på text og bakgrunn */
+#table th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: #333;
+    color: white;
+}
+
+/*Gjør at teksten beveger seg ned når skjermen eller vinduet er mindre en 800px
+ så du kan lesse hva det står sellom vinduet er mindre en 800px*/
+@media screen and (max-width: 900px) {
+    .content {
+        width: 96%;
+    }
+}
+
+/* fjerner borderen som var rundt den embeded youtube videoen*/
+iframe {
+    border: 0;
+}
+
+/* Gjør så links i link classen blir crimson etter du har trykket på dem*/
+.link:visited {
+    color: #a64615;
+}
+
+/*Når du hoverer over noe med link classen så endrer den farge å får en understrek*/
+.link:hover {
+    color: #a5d5a8;
+    text-decoration-line: underline;
+}
+
+
+/* Gjør så alt i link classen endrer farge*/
+.link:link {
+    color: #0f4420;
+}
+
+/*Lager id' jeg bruker til å navigere nettsiden med*/
+#top, #middle, #bottom #inprog #feles {
+    height: auto;
+    width: auto;
+}
+
+h1, h2, h3, h4, h5 {
+    font-family: co-headline, Segoe UI, SegoeUI, Helvetica Neue, Helvetica, Arial, sans-serif;
+    font-weight: 700;
+    font-style: normal;
+}
