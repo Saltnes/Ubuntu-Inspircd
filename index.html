@@ -1,20 +1,19 @@
 <!DOCTYPE html>
 <!-- setter språk for siden til norsk bokmål -->
-<html lang="nb">
+<html lang="nb" xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hyper-V & inspircd on Ubuntu</title>
     <!-- Importerer fonten som IM bruker co-headline -->
-    <link rel="stylesheet" href="https://use.typekit.net/zkf8jtc.css">
+    <!--<link rel="stylesheet" href="https://use.typekit.net/zkf8jtc.css"> -->
     <link rel="stylesheet" href="CoAdobe%20Fonts.webloc">
     <!--Setter favicon som er bildet på tabed av nettsiden å bildet hvis du finner siden på google etc forskjellige størelser for gamle / forksjelige nettsider-->
     <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
     <!-- hvis det er noen problemer med og åpne kommenter ut kodelinjen ret under -->
-    <link rel="manifest" href="site.webmanifest">
     <link rel="mask-icon" href="safari-pinned-tab.svg" color="#5bbad5">
     <meta name="msapplication-TileColor" content="#da532c">
     <meta name="theme-color" content="#ffffff">
@@ -28,52 +27,212 @@
      jeg en li some er selve listen i den har vi en a tag med active classen
      som gjør at IM knappen har en annen farge.Linker de andre sidene til knappene med href-->
     <ul>
-        <li><a class="active" href="#inprog">Hyper-V Setup & Install</a></li>
-        <li><a href="#top">1.1</a></li>
-        <li><a href="#middle">1.2</a></li>
-        <li><a href="#bottom">1.3</a></li>
-        <li><a href="#feles">1.4</a></li>
+        <li><a class="active" href="#inprog">1.0 Hyper-V Setup & Install</a></li>
+        <li><a href="#top">1.1 Ubuntu Install</a></li>
+        <li><a href="#bottom">1.3 Network Setup</a></li>
+        <li><a href="#feles">1.4 Inspircd Dependencies</a></li>
+        <li><a href="#config">1.5 Inspircd Configuration</a></li>
     </ul>
 </div>
 <!-- Lager div class content der jeg har det meste inholdet på nettsiden
  i den endrer jeg i CSS så alt inholdet blir midtstilt på nettsiden font etc-->
 
 <div class="content">
-    <h1 id="inprog">
+    <h1>
         Ubuntu Hyper-V & inspircd Setup Tutorial
     </h1>
-
+    <h2 id="inprog">Hyper-V Setup</h2>
     <!-- Lager en paragraph -->
     <p>
-        Firstly let's configure and enable Hyper-V so we can get started.
-    </p>
+        Firstly let's configure and enable Hyper-V, so we can get started. Let's make sure we have virtualization
+        enabled in our UEFI/BIOS when that is done open Windows Powershell as admin and run the following command: <br>
+        <b> Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Hyper-V -All</b> <br>
+        When the installation is complete go ahead and reboot your device.<br>
 
+        <br>
+        Now let's go ahead and create a virtual switch for our VM open up Hyper-V Manager and under the actions tab on
+        the right open up the <b>Virtual Switch Manager.</b>
+    <figure class="center">
+        <img width="70%" src="https://i.imgur.com/sBiwkWi.png" alt="Creating A Virtual Switch">
+    </figure>
+    <p>
+        In the <em>Virtual Switch Manager window,</em> Create a new
+        virtual switch. Make sure to set the switch to <b>External</b> now go ahead and click <b>Create Virtual
+        Switch</b>
+    </p>
+    <figure class="center">
+        <img width="75%"
+             src="https://phoenixnap.com/kb/wp-content/uploads/2021/06/ubuntu-hyperv-create-virtual-switch-step-02.png"
+             alt="Image showing how to create a net external switch">
+    </figure>
+
+    <p>
+        Now that we've created an External Switch let's name it I'm going with IRC Server. Also make sure to select the
+        correct <em>Network Adapter,</em> now click OK to confirm.
+    <figure class="center">
+        <img width="60%" src="https://i.imgur.com/gdfiu62.png" alt="Naming the Switch">
+    </figure>
 
     <h2 id="top">
-       xxxxxx
+
     </h2>
     <p>
 
     </p>
 
     <h2 id="middle">
-        xxx
+        Hyper-V - Ubuntu Installation
     </h2>
     <p>
-
+        Under the action tab press <b>Quick Create</b>
+    <figure class="center">
+        <img width="30%" src="https://i.imgur.com/S1ogCAL.png" alt="Quick Creating a new VM">
+    </figure>
+    <figure class="center">
+        <img width="60%" src="https://i.imgur.com/pzSBUSN.png" alt="Configuring VM">
+    </figure>
+    <p>
+        Now choose the latest version of Ubuntu. Then make sure you select the <b>Virtual Network Adapter</b> we created
+        earlier. and you can go ahead and <b>Create Virtual Machine</b>
     </p>
     <h2 id="bottom">
-        xxxxx
+        Network Setup
     </h2>
     <p>
-
+        Now that Ubuntu is installed let's configure our network settings let's begin with Windows. Open up your <b>Control
+        Panel -> Network and Internet -> Network and Sharing Center -> Change adapter settings</b>
+    </p>
+    <figure class="center">
+        <img width="50%" src="https://i.imgur.com/WWRp1X7.png" alt="Openign Adapter Settings">
+    </figure>
+    <p>
+        Now lets set up our static IP. But first to find your <b>IP subnet mask and gateway,</b> open up CMD and run
+        ipconfig then let's right-click the virtual network adapter we set up earlier and select properties.
+    </p>
+    <figure class="center">
+        <img width="40%" src="https://i.imgur.com/kQCG7Gw.png" alt="Selecting properties on our network adapter">
+    </figure>
+    <figure class="center">
+        <img width="85%" src="https://i.imgur.com/JG1HTEe.png" alt="setting up a static IP address">
+    </figure>
+    <p>
+        Now it's time to do the same within our Ubuntu VM. Start it up trough Hyper-V Manager and go through the
+        installation process. When finished open up the network settings by clicking on the settings in the top-right
+    </p>
+    <figure class="center">
+        <img width="40%" src="https://i.imgur.com/5oNbUxj.png" alt="Ubuntu Network settings">
+    </figure>
+    <p>
+        Now that we're inside the settings menu go ahead and click the cog
+    </p>
+    <figure class="center">
+        <img width="40%" src="https://i.imgur.com/LUEUqAw.png" alt="Expanded Network settings">
+    </figure>
+    <p>
+        Now navigate to the IPv4 tab, and match the settings we used on our <b>Virtual Network Adapter</b> in Windows.
+        Now restart the VM or check-uncheck the wired connection in network settings to apply the settings.
+    </p>
+    <figure class="center">
+        <img width="50%" src="https://i.imgur.com/Ljhd1Z9.png" alt="Ubuntu manual network settings">
+    </figure>
+    <h2 id="feles">
+        Dependencies and Inspircd Download
+    </h2>
+    <p>
+        Now we can get started by downloading the dependencies we need for Inspircd, open up the terminal and enter the
+        following commands one by one: <br><br>
+        <em><b>sudo apt-get install git <br>
+            sudo apt-get install perl<br>
+            sudo apt-get install g++<br>
+            sudo apt-get install make</b></em>
+    </p>
+    <p>
+        Now download the latest inspircd version from <a class="link"
+                                                         href="https://github.com/inspircd/inspircd/releases/latest"
+                                                         target="_blank"><b>https://github.com/inspircd/inspircd/releases/latest</b></a>
+        <br>
+        Now we need to grab the latest version and download the tar.gz archive we can do this through the terminal with
+        the wget command as an example:<br><br>
+        <em>wget <b>https://github.com/inspircd/inspircd/archive/v3.13.0.tar.gz</b></em>
+        Now extract the download with:<br><br>
+        <em><b>tar xvf ./v3.13.0.tar.gz</b></em> <br> Now that the download is extracted let's navigate our terminal to
+        the folder using the <em><b>cd inspircd-3.13.0</b></em> command.
+        Time to start configuring inspircd. <br>Firstly run <b>
+        <em>perl ./configure</em>
+    </b>
+        <br> and press return/enter on the prompts. When that is complete it's time to build the server executing
+        the
+        <em><b>make</b></em> command. This might take a couple of minutes to complete. With that complete run the
+        <em><b>make install</b></em> command to move the executable files into the configured locations.
+    </p>
+    <h2 id="config">
+        Configuring the Server
+    </h2>
+    <p>
+        To configure the server we need to create a config file we can do this by either navigating to the directory
+        through the file explorer or through the <em><b>nano
+        /home/username/inspircd-3.13.0/run/conf/inspircd.conf</b></em>
+        command in the terminal.
+    </p>
+    <figure class="center">
+        <img width="80%" src="https://i.imgur.com/1r88i5d.png" alt="config file location">
+    </figure>
+    <p>
+        The configuration file should look something like this feel free to copy-paste it into your config file
+        though be sure to change the values below to reflect
+        your own configuration.
     </p>
 
-    <h2 id="feles">
-        xxxxxx
-    </h2>
-    <p>
+    <pre>
+        <code class="lang-xml">
+&lt;config format="xml"&gt;
+&lt;define name="bindip" value="1.2.2.3"&gt;
+&lt;define name="localips" value="&amp;bindip;/24"&gt;
 
+####### SERVER CONFIGURATION #######
+
+&lt;server
+        name="tutorials.ubuntu.com"
+        description="Welcome to Ubuntu Tutorials"
+        id="97K"
+        network="tutorials.ubuntu.com"&gt;
+
+
+####### ADMIN INFO #######
+
+&lt;admin
+       name="tutorial ubuntu"
+       nick="tutorial"
+       email="tutorials@ubuntu.com"&gt;
+
+####### PORT CONFIGURATION #######
+
+&lt;bind
+      address="23.54.785.654"
+      port="6697"
+      type="clients"&gt;
+        </code>
+    </pre>
+    <p>
+        <em>SERVER_HOSTNAME/FQDN</em>: Hostname for the server<br>
+        <em>SERVER_DESCRIPTION</em>: A description for your server<br>
+        <em>SERVER_SID</em>: A unique sequence of 3 characters, the first being a number (make sure to capitalise)<br>
+        <em>NETWORK_NAME</em>: The name of your IRC network<br>
+        <em>ADNIN_NAME</em>: IRC admin name<br>
+        <em>ADMIN_NICK</em>: IRC admin nick<br>
+        <em>ADMIN_EMAIL</em>: IRC admin email<br>
+        <em>SERVER_IP</em>: Public IP for the server<br>
+        <em>SERVER_PORT</em>: Server port (usually 6697)<br>
+        <em>SERVER_TYPE</em>: The clients or servers type (clients should be fine here)<br>
+    </p>
+    <h2 id="end">Starting your Server</h2>
+    <p>
+        Now all that's left after you've configured your server is running it! <br>you do so by running the <em><b>/home/username/inspircd-3.13.0/run/inspircd
+        start</b></em> command in the terminal while in your inspircd directory.<br>To get the status of the server you
+        can
+        run <em><b>/home/username/inspircd-3.13.0/run/inspircd
+        status</b></em> and to stop your server run: <em><b>/home/username/inspircd-3.13.0/run/inspircd
+        stop</b></em>
     </p>
 </div>
 </body>

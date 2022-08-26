@@ -52,7 +52,7 @@ av siden og gjør så det ikke kan bli mer en 800 px lang. Lager egentlig en bok
 .center {
     display: block;
     margin: auto;
-    width: 20%;
+
 }
 
 /*                            CSS  NAVIGATIONSBAR */
@@ -62,7 +62,7 @@ ul {
     margin: 0;
     padding: 0;
     overflow: hidden;
-    background-color: #0f4420;
+    background-color: #DD4814;
     position: fixed;
     top: 0;
     width: 100%;
@@ -92,8 +92,8 @@ li a:hover:not(.active) {
 
 /* gjør så siden du er på har en annen farge i navbar*/
 .active {
-    background-color: #f2ba69;
-    color: #a64615;
+   /* background-color: salmon;
+    color: #a64615; */
 }
 
 /*                 CSS  TABELLEN*/
@@ -180,4 +180,8 @@ h1, h2, h3, h4, h5 {
     font-family: co-headline, Segoe UI, SegoeUI, Helvetica Neue, Helvetica, Arial, sans-serif;
     font-weight: 700;
     font-style: normal;
+}
+
+.list{
+    !important;
 }
