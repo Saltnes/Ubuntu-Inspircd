@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hyper-V & inspircd on Ubuntu</title>
     <!-- Importerer fonten som IM bruker co-headline -->
-    <!--<link rel="stylesheet" href="https://use.typekit.net/zkf8jtc.css"> -->
+    <link rel="stylesheet" href="https://use.typekit.net/zkf8jtc.css">
     <link rel="stylesheet" href="CoAdobe%20Fonts.webloc">
     <!--Setter favicon som er bildet på tabed av nettsiden å bildet hvis du finner siden på google etc forskjellige størelser for gamle / forksjelige nettsider-->
     <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
@@ -27,11 +27,12 @@
      jeg en li some er selve listen i den har vi en a tag med active classen
      som gjør at IM knappen har en annen farge.Linker de andre sidene til knappene med href-->
     <ul>
-        <li><a class="active" href="#inprog">1.0 Hyper-V Setup & Install</a></li>
+        <li><a href="#inprog">1.0 Hyper-V Setup & Install</a></li>
         <li><a href="#top">1.1 Ubuntu Install</a></li>
         <li><a href="#bottom">1.3 Network Setup</a></li>
         <li><a href="#feles">1.4 Inspircd Dependencies</a></li>
         <li><a href="#config">1.5 Inspircd Configuration</a></li>
+        <li><a href="#end">2 Starting Server</a></li>
     </ul>
 </div>
 <!-- Lager div class content der jeg har det meste inholdet på nettsiden
@@ -129,11 +130,11 @@
         <img width="40%" src="https://i.imgur.com/LUEUqAw.png" alt="Expanded Network settings">
     </figure>
     <p>
-        Now navigate to the IPv4 tab, and match the settings we used on our <b>Virtual Network Adapter</b> in Windows.
+        Now navigate to the IPv4 tab, and use another IP address than what we put in our <b>Virtual Network Adapter</b> in Windows, example; Windows IP: 192.168.50.3 Ubuntu IP: 192.168.50.4
         Now restart the VM or check-uncheck the wired connection in network settings to apply the settings.
     </p>
     <figure class="center">
-        <img width="50%" src="https://i.imgur.com/Ljhd1Z9.png" alt="Ubuntu manual network settings">
+        <img width="50%" src="https://i.imgur.com/ykSan6D.png" alt="Ubuntu manual network settings">
     </figure>
     <h2 id="feles">
         Dependencies and Inspircd Download
@@ -227,8 +228,8 @@
     </p>
     <h2 id="end">Starting your Server</h2>
     <p>
-        Now all that's left after you've configured your server is running it! <br>you do so by running the <em><b>/home/username/inspircd-3.13.0/run/inspircd
-        start</b></em> command in the terminal while in your inspircd directory.<br>To get the status of the server you
+        Now all that's left after you've successfully configured your server is running it! <br>you do so by running the <em><b>/home/username/inspircd-3.13.0/run/inspircd
+        start</b></em> command in the terminal while in the inspircd directory.<br>To get the status of the server you
         can
         run <em><b>/home/username/inspircd-3.13.0/run/inspircd
         status</b></em> and to stop your server run: <em><b>/home/username/inspircd-3.13.0/run/inspircd

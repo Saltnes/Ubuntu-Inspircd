@@ -37,7 +37,7 @@ body {
 av siden og gjør så det ikke kan bli mer en 800 px lang. Lager egentlig en boks
  som er på midten av siden og har en maks brede på 800px 40px høyde så den ikke går i nav baren*/
 .content {
-    font-family: co-headline, Segoe UI, SegoeUI, Helvetica Neue, Helvetica, Arial, sans-serif;
+    font-family: Segoe UI, SegoeUI, Helvetica Neue, Helvetica, Arial, sans-serif;
     width: 900px;
     margin: 40px auto;
     padding: 0 10px 0 12px;
@@ -62,7 +62,7 @@ ul {
     margin: 0;
     padding: 0;
     overflow: hidden;
-    background-color: #DD4814;
+    background-color: #333333;
     position: fixed;
     top: 0;
     width: 100%;
@@ -86,8 +86,8 @@ li a {
 
 /* Når du beveger musen over navbaren bytter boksen farge når dem ikke har klassen active*/
 li a:hover:not(.active) {
-    background-color: #a5d5a8;
-    color: #0f4420;
+    background-color: #DD4814;
+    color: White;
 }
 
 /* gjør så siden du er på har en annen farge i navbar*/
